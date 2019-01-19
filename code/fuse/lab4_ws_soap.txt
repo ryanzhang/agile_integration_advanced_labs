@@ -1,0 +1,38 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.usecase.fuse.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:updateAccount>
+         <!--Optional:-->
+         <arg0>
+            <clientId>0</clientId>
+            <!--Optional:-->
+            <company>
+               <active>true</active>
+               <!--Optional:-->
+               <geo>NA</geo>
+               <!--Optional:-->
+               <name>Bill Smith</name>
+            </company>
+            <!--Optional:-->
+            <contact>
+               <!--Optional:-->
+               <city>Baltimore</city>
+               <!--Optional:-->
+               <firstName>Satya</firstName>
+               <!--Optional:-->
+               <lastName>Jayanti</lastName>
+               <!--Optional:-->
+               <phone>143-222-2344</phone>
+               <!--Optional:-->
+               <state>MD</state>
+               <!--Optional:-->
+               <streetAddr>1077 America Ave.</streetAddr>
+               <!--Optional:-->
+               <zip>11751</zip>
+            </contact>
+            <!--Optional:-->
+            <salesRepresentative>?</salesRepresentative>
+         </arg0>
+      </ser:updateAccount>
+   </soapenv:Body>
+</soapenv:Envelope>

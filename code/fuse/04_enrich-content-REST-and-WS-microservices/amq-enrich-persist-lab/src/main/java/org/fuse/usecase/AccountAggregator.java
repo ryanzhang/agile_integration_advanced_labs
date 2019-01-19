@@ -19,7 +19,25 @@ public class AccountAggregator implements AggregationStrategy {
     @Override
     public Exchange aggregate(Exchange oldExchange, Exchange newExchange) {
 
-        return oldExchange;
+        if (oldExchange == null) {
+            // Account account = newExchange.getIn().getBody(Account.class);
+            // newExchange.getIn().setBody(account);
+             return newExchange;
+         }
+ 
+         if (oldExchange.getIn().getBody() instanceof String)  {
+                 return newExchange;
+         }
+         CorporateAccount ca = newExchange.getIn().getBody(CorporateAccount.class);
+         Account account = oldExchange.getIn().getBody(Account.class);
+ 
+ 
+         //System.out.println("Geo is " + account.getCompany().getGeo() + "Client id is " + ca.getId() + ", sales rep is " + ca.getSalesContact());
+         account.setClientId(ca.getId());
+         account.setSalesRepresentative(ca.getSalesContact());
+         oldExchange.getIn().setBody(account);
+ 
+         return oldExchange;
     }
     
 }

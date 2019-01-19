@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:cxf="http://camel.apache.org/schema/cxf"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd         http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd         http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <camelContext id="cxfrs" xmlns="http://camel.apache.org/schema/spring">
+        <dataFormats>
+            <xmljson id="xmljson"/>
+            <jacksonxml id="jack" unmarshalTypeName="org.fuse.usecase.service.CorporateAccount"/>
+        </dataFormats>
+        <restConfiguration bindingMode="json" component="jetty"
+            host="0.0.0.0" port="8281"/>
+        <rest id="rest-0039604f-8736-429b-ad96-56079a685afc" path="/jaxrs">
+            <put consumes="application/json"
+                id="put-6e3b5085-7b54-4822-b552-a88946a8af9f"
+                outType="org.fuse.usecase.service.CorporateAccount"
+                type="org.fuse.usecase.service.Account" uri="/account">                
+                <to uri="direct:updateAccount"/>
+            </put>
+        </rest>
+        <route id="updateAccount">
+            <from id="_from1" uri="direct:updateAccount"/>
+            <log id="_log1" loggingLevel="INFO" message="updateAccount"/>
+            <to id="_to1" uri="cxf://http://localhost:9090/ws/customerService?serviceClass=org.fuse.usecase.service.CustomerWS&amp;defaultOperationName=updateAccount"/>
+            <setHeader headerName="Content-Type" id="_setHeader1">
+                <constant>application/json</constant>
+            </setHeader>
+            <setBody id="_setBody1">
+                <simple>${body[0]}</simple>
+            </setBody>
+            <marshal id="_marshal1" ref="jack"/>
+            <marshal id="_marshal2" ref="xmljson"/>            
+        </route>
+    </camelContext>
+</beans>

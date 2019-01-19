@@ -51,7 +51,20 @@
       <artifactId>camel-cxf</artifactId>
     </dependency>
 
-
+	<dependency>
+	  <groupId>org.apache.camel</groupId>
+	  <artifactId>camel-xmljson</artifactId>
+	  <!-- Use the same version as camel-core, but remember that this component is only available from Camel 2.10 -->
+	</dependency>
+	<dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jacksonxml</artifactId>
+        </dependency>
+	<dependency>
+	  <groupId>xom</groupId>
+	  <artifactId>xom</artifactId>
+	  <version>1.2.5</version>
+	</dependency>
     <!-- Camel -->
     <dependency>
       <groupId>org.apache.camel</groupId>
@@ -62,7 +75,11 @@
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-rest-swagger-starter</artifactId>
     </dependency>
-
+    
+	<dependency>
+	  <groupId>org.apache.camel</groupId>
+	  <artifactId>camel-jetty</artifactId>
+	</dependency>
 
     <dependency>
       <groupId>org.apache.camel</groupId>
