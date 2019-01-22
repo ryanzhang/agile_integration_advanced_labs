@@ -52,7 +52,7 @@ Then Using camel route to proceed the request and heading to message queue:
       </setBody>
     </route>
 
-![Image of inbound route](description/inbound.png)
+![Image of inbound route](description/inbound-route.png)
 ## xlate
 It translates the message from the Person format to the NextGate accepted object format, therefore store in message queue
 
@@ -162,6 +162,8 @@ The outbound route code:
 ![Image of outbound route](description/outbound-route.png)
 
 ## How to Run
+Video instruction, Please click:
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/T8XXN2o_Ye0/0.jpg)](https://youtu.be/T8XXN2o_Ye0)
 
 ### 1) Start AMQ7 or Artemis
