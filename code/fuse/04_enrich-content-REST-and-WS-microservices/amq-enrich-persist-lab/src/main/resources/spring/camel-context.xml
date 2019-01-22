@@ -34,6 +34,7 @@
 <!--             <from id="_from3" uri="direct:usecase"/> -->
                         <from id="_from3" uri="amqp:queue:accountQueue"/> 
             <convertBodyTo id="_convertBodyTo1" type="String"/>
+            <log id="_logJsonString" message="String output from Queue>>> ${body}" />
             <multicast id="_multicast1" parallelProcessing="true" strategyRef="reconcileData">
                 <log id="_log2" loggingLevel="INFO" message="inside multicast"/>
                 <to id="_to4" uri="direct://callRestEndpoint"/>
